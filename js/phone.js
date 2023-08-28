@@ -7,11 +7,23 @@ const loadPhone = async (searchText) =>  {
 };
   
  const displayPhone = phones =>  {
-        // console.log(phones);
-        // 1 je div bsabo
+        console.log(phones);
+        // 1 je div bsabo oi div er id name
             const phoneContainer = document.getElementById('phone-container');
             // clear  phone container cards before adding new cards
-            phoneContainer.textContent='';
+
+                 phoneContainer.textContent = ``;
+                //    display show all button if there are more than 20 phone
+                     const showAllContainer  =  document.getElementById('show-all-container')
+                   if(phones.length > 12){
+                        showAllContainer.classList.remove('hidden');
+                   }else{
+                       showAllContainer.classList.add('hidden');
+                   }
+                     
+                //  display only first 10  phone 
+                 phones  = phones.slice(0,12);
+
          phones.forEach(phone => {
                console.log(phone);
 
@@ -44,5 +56,14 @@ const loadPhone = async (searchText) =>  {
        console.log(searchText);
        loadPhone(searchText);
   }
+
+
+   const handleSearch2 =  () =>{
+          
+        const searchField =  document.getElementById('search-field2');
+        const searchText =  searchField.value;
+        loadPhone(searchText);
+           
+   };
 
 // loadPhone();
